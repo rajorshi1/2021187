@@ -3,6 +3,7 @@
 #include<string.h>
 #include<sys/types.h>
 #include<unistd.h>
+#include <sys/wait.h>
 char cwd[1000];
 char prevWorkingDirectory[1000];
 
@@ -120,11 +121,12 @@ int main() {
             exxit(token);
         }
         else if (!stringCompare(token, "ls")) {
+            printf("doing ls\n");
             pid_t pid;
             pid=fork();
             if(pid==0) {
                 token=strtok(NULL," ");
-                execl("ls.c",token,NULL);
+                execl("./ls",token,NULL);
                 exit(0);
             }
             else if(pid>0) {
@@ -139,7 +141,7 @@ int main() {
             pid=fork();
             if(pid==0) {
                 token=strtok(NULL," ");
-                execl("ls.c",token,splits,NULL);
+                execl("./cat",token,splits,NULL);
                 exit(0);
             }
             else if(pid>0) {
@@ -154,7 +156,7 @@ int main() {
             pid=fork();
             if(pid==0) {
                 token=strtok(NULL," ");
-                execl("date.c",token,NULL);
+                execl("./date",token,NULL);
                 exit(0);
             }
             else if(pid>0) {
@@ -169,7 +171,7 @@ int main() {
             pid=fork();
             if(pid==0) {
                 token=strtok(NULL," ");
-                execl("mkdir.c",token,splits,NULL);
+                execl("./mkdir",token,splits,NULL);
                 exit(0);
             }
             else if(pid>0) {
@@ -184,7 +186,7 @@ int main() {
             pid=fork();
             if(pid==0) {
                 token=strtok(NULL," ");
-                execl("rm.c",token,splits,NULL);
+                execl("./rm",token,splits,NULL);
                 exit(0);
             }
             else if(pid>0) {

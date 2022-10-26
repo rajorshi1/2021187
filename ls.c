@@ -8,7 +8,7 @@ int stringCompare(char one[], char two[]) {
 }
 
 void main(int argc, char const* arg[]){
-    char* token=arg[0];
+    char* token=(char*)arg[0];
     if(stringCompare(token,"-a")){
         struct dirent **dir;
         int n=scandir(".",&dir,0,alphasort);

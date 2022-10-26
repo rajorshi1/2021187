@@ -2,6 +2,7 @@
 #include<string.h>
 #include <sys/stat.h>
 #include<dirent.h>
+#include <unistd.h>
 
 char cwd[1000];
 
@@ -21,7 +22,7 @@ void callChdir(char* add){
 }
 
 int main(int argc, char const* arg[]){
-    char* token=arg[0];
+    char* token=(char*)arg[0];
     getcwd(cwd,sizeof(cwd));
     char args[105];
     strcpy(args,arg[1]);
