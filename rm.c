@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 
 int stringCompare(char one[], char two[]) {
     return strcmp(one, two);
 }
 
 int main(int argc, char const* arg[]){
-    char* token=arg[0];
+    char* token=(char*)arg[0];
     char args[105];
     strcpy(args,arg[1]);
     if(token==NULL){
@@ -36,7 +37,7 @@ int main(int argc, char const* arg[]){
         while(file_var!=NULL){
             printf("remove file %s ? Enter 'y' for yes \n",file_var);
             char input;
-            scanf("%[^\n]%*c",input);
+            scanf("%[^\n]%*c",&input);
             if(input=='y'){
                 unlink(file_var);
             }

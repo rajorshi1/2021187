@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <unistd.h>
+#include <stdlib.h>
 char cwd[1000];
 
 int stringCompare(char one[], char two[]) {
@@ -8,7 +10,7 @@ int stringCompare(char one[], char two[]) {
 }
 
 int main(int argc, char const* arg[]){
-    char* token=arg[0];
+    char* token=(char*)(arg[0]);
     char str[105];
     strcpy(str,arg[1]);
     if(!stringCompare(token,"-E")){

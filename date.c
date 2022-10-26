@@ -7,7 +7,7 @@ int stringCompare(char one[], char two[]) {
 }
 
 int main(int argc, char const* arg[]){
-    char* token=arg[0];
+    char* token=(char*)arg[0];
     if(stringCompare(token,"-u")==0){
         time_t t=time(&t);
         struct tm *utc=gmtime(&t);
